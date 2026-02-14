@@ -1,4 +1,4 @@
-package com.canhhocit.Library_Management;
+package com.canhhocit.Library_Managerment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
