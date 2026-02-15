@@ -1,5 +1,7 @@
 package com.canhhocit.Library_Managerment.dto.response;
 
+import java.time.LocalDateTime;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,10 +12,12 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CategoryResponse {
+public class UserResponse {
     Long id;
-
-    String name;
-
-    String description;
+    String username;
+    String password;
+    String fullName;
+    String role;
+    String status;
+    LocalDateTime createdAt;
 }

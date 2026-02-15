@@ -10,7 +10,8 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CategoryRequest {
-    String name;
-    String description;
+public class UserCreateRequest {
+    String username;
+    String password;
+    String fullName;
 }
