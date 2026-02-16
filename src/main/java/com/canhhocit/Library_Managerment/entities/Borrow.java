@@ -28,12 +28,12 @@ public class Borrow {
     @Column(length = 20)
     private String status = "BORROWING";  // BORROWING, RETURNED
     
-    //N-1 với User
+    //N-1  User
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     
-    //1-N với BorrowDetail
+    //1-N  BorrowDetail
     @OneToMany(mappedBy = "borrow", cascade = CascadeType.ALL)
     private List<BorrowDetail> borrowDetails;
 }

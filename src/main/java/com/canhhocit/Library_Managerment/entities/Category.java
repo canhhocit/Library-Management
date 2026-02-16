@@ -25,7 +25,7 @@ public class Category {
     @Column(columnDefinition = "TEXT")
     private String description;
     
-    // Quan hệ 1-N với Book
+    // 1-N  Book
     @OneToMany(mappedBy = "category")
     private List<Book> books;
 }

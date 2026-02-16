@@ -1,10 +1,10 @@
 package com.canhhocit.Library_Managerment.controllers;
 
-
-import com.canhhocit.Library_Managerment.entities.Book;
+import com.canhhocit.Library_Managerment.dto.request.BookRequest;
+import com.canhhocit.Library_Managerment.dto.response.ApiResponse;
+import com.canhhocit.Library_Managerment.dto.response.BookResponse;
 import com.canhhocit.Library_Managerment.services.BookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,46 +16,40 @@ public class BookController {
     
     private final BookService bookService;
 
-    // Lấy tất cả sách
     @GetMapping
-    public ResponseEntity<List<Book>> getAllBooks() {
-        return ResponseEntity.ok(bookService.getAllBooks());
+    public ApiResponse<List<BookResponse>> getAllBooks() {
+        return bookService.getAllBooks();
     }
 
-    // Lấy sách theo ID
     @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
-        return ResponseEntity.ok(bookService.getBookById(id));
+    public ApiResponse<BookResponse> getBookById(@PathVariable Long id) {
+        return bookService.getBookById(id);
     }
 
-    // Tạo sách mới
     @PostMapping
-    public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        return ResponseEntity.ok(bookService.createBook(book));
+    public ApiResponse<BookResponse> createBook(@RequestBody BookRequest request) {
+        return bookService.createBook(request);
     }
 
-    // Cập nhật sách
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book book) {
-        return ResponseEntity.ok(bookService.updateBook(id, book));
+    public ApiResponse<BookResponse> updateBook(
+            @PathVariable Long id, 
+            @RequestBody BookRequest request) {
+        return bookService.updateBook(id, request);
     }
 
-    // Xóa sách (soft delete)
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
-        bookService.deleteBook(id);
-        return ResponseEntity.ok("Xóa sách thành công");
+    public ApiResponse<Void> deleteBook(@PathVariable Long id) {
+        return bookService.deleteBook(id);
     }
 
-    // Tìm kiếm sách
     @GetMapping("/search")
-    public ResponseEntity<List<Book>> searchBooks(@RequestParam String keyword) {
-        return ResponseEntity.ok(bookService.searchBooks(keyword));
+    public ApiResponse<List<BookResponse>> searchBooks(@RequestParam String keyword) {
+        return bookService.searchBooks(keyword);
     }
 
-    // Lấy sách còn trong kho
     @GetMapping("/available")
-    public ResponseEntity<List<Book>> getAvailableBooks() {
-        return ResponseEntity.ok(bookService.getAvailableBooks());
+    public ApiResponse<List<BookResponse>> getAvailableBooks() {
+        return bookService.getAvailableBooks();
     }
 }

@@ -32,7 +32,7 @@ public class User {
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
      
-    // Quan hệ 1-N với Borrow
+    //  1-N  Borrow
     @OneToMany(mappedBy = "user")
     private List<Borrow> borrows;
 }

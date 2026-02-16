@@ -24,7 +24,7 @@ public class Author {
     @Column(columnDefinition = "TEXT")
     private String biography;
     
-    // Quan hệ N-N với Book
+    // N-N  Book
     @ManyToMany(mappedBy = "authors")
     private List<Book> books;
 }
