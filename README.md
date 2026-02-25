@@ -171,3 +171,9 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 3. Chạy ứng dụng
 
 `mvn spring-boot:run`
+
+---
+
+## API endpoints: nằm trong file `APItest.md`
+
+----- chạy docker image thì phải tạo db `library_db` trong mysql-identity
