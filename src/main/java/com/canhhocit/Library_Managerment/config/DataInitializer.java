@@ -2,6 +2,7 @@ package com.canhhocit.Library_Managerment.config;
 
 import java.time.LocalDateTime;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.canhhocit.Library_Managerment.entities.User;
@@ -17,21 +18,21 @@ import lombok.extern.slf4j.Slf4j;
 public class DataInitializer {
 
     private final UserRepository userRepository;
-    // private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() {
         if (userRepository.findByUsername("admin").isEmpty()) {
             User admin = new User();
             admin.setUsername("admin");
-            admin.setPassword("123");
+            admin.setPassword(passwordEncoder.encode("123"));
             admin.setFullName("System Admin");
             admin.setRole("ADMIN");
             admin.setStatus("ACTIVE");
             admin.setCreatedAt(LocalDateTime.now());
             userRepository.save(admin);
             log.info("CREATED admin account: username: admin, password:123. Let's Change your Password!");
-        }else{
+        } else {
             log.info("admin Account is existed!");
         }
     }

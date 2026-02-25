@@ -57,4 +57,9 @@ public class UserController {
         return userService.getUserbyUsername(username);
     }
 
+    @GetMapping("/myInfo")
+    public ApiResponse<UserResponse> getMyInfo() {
+        return userService.getMyInfo();
+    }
+
 }
